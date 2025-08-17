@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Kembali Online!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #10b981; /* Tailwind green-500 */
+            --secondary-color: #059669; /* Tailwind green-600 */
+            --text-color: #f3f4f6; /* Tailwind gray-200 */
+            --background-color: #1f2937; /* Tailwind gray-800 */
+            --card-background: #374151; /* Tailwind gray-700 */
+            --glow-color: rgba(16, 185, 129, 0.7);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animasi Latar Belakang Partikel */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        /* Keyframes untuk animasi partikel */
+        @keyframes move-particles {
+            0% { transform: translate(0, 0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)); opacity: 0; }
+        }
+
+        .particle {
+            position: absolute;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            animation: move-particles 20s infinite linear;
+        }
+
+        /* Container utama untuk konten */
+        .maintenance-container {
+            z-index: 1;
+            padding: 2rem;
+            max-width: 90%;
+            width: 500px;
+            background: var(--card-background);
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: fade-in-scale 1s ease-out forwards;
+        }
+        
+        /* Keyframes untuk animasi fade-in */
+        @keyframes fade-in-scale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .icon-wrapper {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            animation: pulse-glow 2s infinite ease-in-out;
+            transform-origin: center;
+        }
+
+        /* Keyframes untuk animasi pulse */
+        @keyframes pulse-glow {
+            0% { transform: scale(1); filter: drop-shadow(0 0 5px var(--glow-color)); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 15px var(--glow-color)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 5px var(--glow-color)); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        /* Tombol Unduh */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 9999px; /* rounded-full */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.6);
+        }
+
+        .download-btn .fas {
+            font-size: 1.25rem;
+        }
+
+        /* Responsif */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            p { font-size: 1rem; }
+            .icon-wrapper { font-size: 4rem; }
+            .download-btn { padding: 0.7rem 1.5rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="particles">
+        <!-- JS akan mengisi partikel-partikel di sini -->
+    </div>
+
+    <div class="maintenance-container">
+        <div class="icon-wrapper">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h1>Server Kembali Online!</h1>
+        <p>Pemeliharaan telah selesai. Server Toolz kini sudah kembali online dengan pembaruan dan peningkatan performa.</p>
+        <a href="https://mega.nz/file/CZJkFSZS#98VkrsPpxci3Q6dl-vvv-nzVjCt4MQbuMdMVmZAP7_A" class="download-btn">
+            <i class="fas fa-download"></i>
+            Unduh APK Terbaru
+        </a>
+    </div>
+
+    <script>
+        const particlesContainer = document.querySelector('.particles');
+        const numParticles = 50; // Jumlah partikel yang akan dibuat
+
+        function createParticles() {
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particlesContainer.appendChild(particle);
+
+                // Mengatur properti partikel secara acak
+                const size = Math.floor(Math.random() * 5) + 2;
+                const top = Math.random() * 100;
+                const left = Math.random() * 100;
+                const delay = Math.random() * -20;
+                
+                // Menentukan arah gerak acak
+                const xEnd = Math.random() * 400 - 200;
+                const yEnd = Math.random() * 400 - 200;
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.top = `${top}vh`;
+                particle.style.left = `${left}vw`;
+                particle.style.animationDelay = `${delay}s`;
+                
+                // Mengatur variabel CSS untuk animasi
+                particle.style.setProperty('--x', `${xEnd}px`);
+                particle.style.setProperty('--y', `${yEnd}px`);
+            }
+        }
+
+        window.onload = createParticles;
+    </script>
+
+</body>
+</html>
